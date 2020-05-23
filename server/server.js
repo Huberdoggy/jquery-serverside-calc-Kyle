@@ -17,8 +17,13 @@ app.post('/numbers', (req, res) => {
     res.sendStatus(200);
 });
 
+//Check on numbers array & keep stored number history available even after page refresh
+let route = '/numbers';
+app.get(route, function (req, res) {
+    console.log('Welcome to the user numbers array!');
+    res.send(numbersArray);
 
-
+});
 
 
 
