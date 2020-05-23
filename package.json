@@ -4,7 +4,7 @@
   "description": "Creating a server side calculator for my second weekend challenge at Prime Academy....detailed specs can be seen within INSTRUCTIONS.md",
   "main": "index.js",
   "scripts": {
-    "start": "node server/server.js",
+    "start": "node ./server/server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
