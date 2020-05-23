@@ -1,56 +1,93 @@
 $(document).ready(onReady);
 
-function onReady() {
-// load data from the server, put it on the DOM
-// On button click, create quote
-    $('#submitBtn').on('click', handleSubmit);
-    $('#clearBtn').on('click', clearVals);
-    
-}
+let operator = '';
 
-// create a number object and push it onto the server 
-function captureNumbers() {
-    //here I set variables for each of the number input fields on the page
-    let numberObj = {
-        firstNumber: $('#firstNumber').val(),
-        secondNumber: $('#secondNumber').val()
+function onReady() {
+//display calc history at each browser refresh
+displayHistory();
+//add click event listener to the operator keys to get the calculation operator using 'this' html() method
+    $('.operatorButton').on('click', function () {
+        operator = $(this).html();
+        //change color when clicked
+        $(this).addClass('operatorClicked');
+    });
+//add click event listener to the submit button to get input fields value 
+//and do the calculation
+$('#submitBtn').on('click', caputureNumbersAndCalc);
+//add click event listener to the clear button to clear the input fields
+$('#clearBtn').on('click', clearVals);
+//add click event listener to the clear history button to clear history
+$('#clearHistory').on('click', clearHistory);
+ 
+}
+//////////////
+
+function displayHistory() {
+    $.ajax({
+        //link GET route with /history from my server
+        method: 'GET',
+        url: "/history"
+    }).then(function (response) {
+        //clear the existing content in browser => avoid duplication
+        $('#calcHistory').empty();
+        //loop through the response array and append items
+        response.forEach(element => {
+            let itemToAppend = $(`
+                <li>${element.firstNumber} ${element.operator} ${element.secondNumber} = ${element.result}</li>
+                `);
+            $('#calcHistory').append(itemToAppend);
+        });
+    });
+}// end of displayHistory
+
+
+//function to grab user input values and calc
+function caputureNumbersAndCalc() {
+    //get value from number input fields
+    let firstNumber = $('#firstNumber').val();
+    let secondNumber = $('#secondNumber').val();
+    let calculated = {
+        firstNumber: firstNumber,
+        secondNumber: secondNumber,
+        operator: operator
     };
 
+    //reset the operator to default appearance...
+    operator = '';
+    $('.operatorButton').removeClass('operatorClicked');
+
     $.ajax({
-        type: "POST", //here we post
-        url: "/numbers", //to a 'numbers' dir
-        data: numberObj//the data object with keys of first and second user inputted numbers
-    //end data
-    }).then(function () {
-        console.log(numberObj); // I use this log to determine the format of how the heck my number object is packaged on the server. Will help me navigate the key/vals later..
-        console.log('numberObjs POST to server with AJAX');
-
+        //hit the post route at /calculation from server side
+        //where the calculation will be done and new obj will be pushed to array
+        method: 'POST',
+        url: "/calculation",
+        data: calculated
+    }).then(function (response) {
+        //receive calculation result from the response object from server side
+        let result = response.result;
+        //display result ---> append it to my h2
+        $('#result').append(`<h2>${result}</h2>`);
+        //run displayHistory
+        displayHistory();
     });
-}// end captureNumbers
+}//end of caputureNumbersAndCalc
 
-function getTheNumbers() {
-    $.ajax({
-        type: 'GET',
-        url: '/numbers' // "route", "endpoint"
-    }).then(function (arrayResponse) {
-        let el = $('#numbersOut');
-        el.empty();
-        for (let i = 0; i < arrayResponse.length; i++) {
-            let el2 = arrayResponse[i];
-            el.append(`<li>${el2.firstNumber}, ${el2.secondNumber}</li>`);
-        }//end for
-    });
-    }
-
-function handleSubmit() {
-    console.log('Running POST AND GET routes onclick');
-    
-    captureNumbers();
-    getTheNumbers();
-}//end handleSubmit
-
-
+//Clear the inputs on click of 'C' button...
 function clearVals() {
     $('#firstNumber').val('');
     $('#secondNumber').val('');
+    $('#result').empty();
 }
+
+//function to clear history
+function clearHistory() {
+    $.ajax({
+        //DEL route over on the server
+        method: 'DELETE',
+        url: "/delete"
+    }).then(() => {
+        //refresh to empty the history
+        displayHistory();
+        
+    });
+} //end of clearHistory
