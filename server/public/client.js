@@ -9,7 +9,8 @@ displayHistory();
     $('.operatorButton').on('click', function () {
         operator = $(this).html();
         //change color when clicked
-        $(this).addClass('operatorClicked');
+        $(this).css('background-color', 'rgb(255, 0, 162)');
+        
     });
 //add click event listener to the submit button to get input fields value 
 //and do the calculation
@@ -54,7 +55,7 @@ function caputureNumbersAndCalc() {
 
     //reset the operator to default appearance...
     operator = '';
-    $('.operatorButton').removeClass('operatorClicked');
+    $('.operatorButton').css('background-color', 'aquamarine');
 
     $.ajax({
         //hit the post route at /calculation from server side
@@ -66,7 +67,7 @@ function caputureNumbersAndCalc() {
         //receive calculation result from the response object from server side
         let result = response.result;
         //display result ---> append it to my h2
-        $('#result').append(`<h2>${result}</h2>`);
+        $('#appendageResults').prepend(`<h2>${result}</h2>`);
         //run displayHistory
         displayHistory();
     });
@@ -76,7 +77,7 @@ function caputureNumbersAndCalc() {
 function clearVals() {
     $('#firstNumber').val('');
     $('#secondNumber').val('');
-    $('#result').empty();
+    
 }
 
 //function to clear history
@@ -88,6 +89,9 @@ function clearHistory() {
     }).then(() => {
         //refresh to empty the history
         displayHistory();
+        $('#appendageResults').empty();
+        $('#firstNumber').val('');
+        $('#secondNumber').val('');
         
     });
 } //end of clearHistory

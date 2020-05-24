@@ -7,8 +7,10 @@
 <!--<![endif]-->
 
 <head>
-    <script src="https://code.jquery.com/jquery-3.5.1.js"
-        integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <!--<script src="https://code.jquery.com/jquery-3.5.1.js"
+        integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>-->
+<script src="lightning_canvas.js"></script>
     <script src="client.js"></script>
 
     <meta charset="utf-8">
@@ -25,8 +27,11 @@
     <h1>Kyle's Server Side Calculator</h1>
     <br>
     <br>
-
+    <canvas id="canvas"></canvas>
     <input id="firstNumber" type="number" placeholder="Enter number" />
+    <div id="appendageResults">
+        <ul id="calcHistory"></ul>
+    </div>
     <div class="container" id="funcBtns">
 
         <button id="additionBtn" class="operatorButton">+</button>
@@ -47,12 +52,10 @@
         <button id="button_dot"><i class="ai sun"></i></button>
         <button id="clearHistory">Clear History</button>
     </div>
-    <div class="container"id=appendages>
-    <h2 id="result"></h2>
+    <!--<h2 id="appendage"></h2>
     <br>
     <br>
-    <ul id="calcHistory"></ul>
-    </div>
+    <ul id="calcHistory"></ul>-->
     <script src="" async defer></script>
 </body>
 
