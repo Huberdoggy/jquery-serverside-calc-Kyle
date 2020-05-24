@@ -1,3 +1,182 @@
 .operatorClicked {
-    background-color: green;
+    background-color: rgb(255, 0, 162);
+    ;
+}
+
+@font-face {
+    font-family: "SC Pro Powerline";
+    src: url("/Users/huberdoggy/prime/tier2/Weekend_Challenges/jquery-server-side-calculator/server/public/Source Code Pro Powerline BlackItalic.otf");
+    src: url("/Users/huberdoggy/prime/tier2/Weekend_Challenges/jquery-server-side-calculator/server/public/Source Code Pro Powerline BlackItalic.eot?#iefix") format('embedded-opentype'),
+        /* IE6-IE8 */
+        url("/Users/huberdoggy/prime/tier2/Weekend_Challenges/jquery-server-side-calculator/server/public/Source Code Pro Powerline BlackItalic.woff2") format('woff2'),
+        /* Super Modern Browsers */
+        url("/Users/huberdoggy/prime/tier2/Weekend_Challenges/jquery-server-side-calculator/server/public/Source Code Pro Powerline BlackItalic.woff") format('woff'),
+        /* Pretty Modern Browsers */
+        url("/Users/huberdoggy/prime/tier2/Weekend_Challenges/jquery-server-side-calculator/server/public/Source Code Pro Powerline BlackItalic.ttf") format('truetype'),
+        /* Safari, Android, iOS */
+        url("/Users/huberdoggy/prime/tier2/Weekend_Challenges/jquery-server-side-calculator/server/public/Source Code Pro Powerline BlackItalic.svg#svgFontName") format('svg');
+    /* Legacy iOS */
+}
+
+h1 {
+    font-family: "SC Pro Powerline";
+    text-emphasis-style: sesame;
+    -webkit-text-emphasis-style: sesame;
+    -webkit-text-fill-color: aquamarine;
+    text-align: center;
+    -webkit-text-emphasis-color: springgreen;
+    text-align: center;
+}
+
+body {
+    background-image: url("background.jpg");
+}
+
+.container {
+    display: flex;
+}
+
+#fancyBtns {
+    margin-left: 12rem;
+}
+
+#eqAndC {
+    margin-left: 16rem;
+}
+
+#funcBtns {
+    margin-left: 15rem;
+
+}
+
+#button_zero {
+    border-radius: 20px;
+
+    background-color: aquamarine;
+    border-width: medium;
+}
+
+#button_dot {
+    border-radius: 20px;
+    border-width: medium;
+
+}
+
+
+#additionBtn {
+    background-color: aquamarine;
+    color: black;
+    font-family: "SC Pro Powerline";
+    font-weight: bolder;
+    border-radius: 20px;
+    border-width: medium;
+}
+
+#subtractionBtn {
+    background-color: aquamarine;
+    color: black;
+    font-family: "SC Pro Powerline";
+    font-weight: bolder;
+    border-radius: 20px;
+    border-width: medium;
+}
+
+#multiplicationBtn {
+    background-color: aquamarine;
+    color: black;
+    font-family: "SC Pro Powerline";
+    font-weight: bolder;
+    border-radius: 20px;
+    border-width: medium;
+
+}
+
+#divisionBtn {
+    background-color: aquamarine;
+    color: black;
+    font-family: "SC Pro Powerline";
+    font-weight: bolder;
+    border-radius: 20px;
+    border-width: medium;
+}
+
+
+#submitBtn {
+    background-color: aquamarine;
+    color: black;
+    font-family: "SC Pro Powerline";
+    border-radius: 20px;
+    border-width: medium;
+
+}
+
+#clearBtn {
+    font-family: "SC Pro Powerline";
+    font-weight: bolder;
+    border-radius: 20px;
+    background-color: aquamarine;
+    border-width: medium;
+
+}
+
+#clearHistory {
+    font-family: "SC Pro Powerline";
+    font-style: italic;
+    font-weight: bolder;
+    border-radius: 20px;
+    background-color: aquamarine;
+    border-width: medium;
+
+}
+
+#firstNumber {
+    box-shadow: inset 0 0 0px 3px;
+    color: black;
+    text-align: center;
+    font-family: "SC Pro Powerline";
+    font-weight: bolder;
+    border-radius: 20px;
+    border-color: transparent;
+    margin-left: 13rem;
+}
+
+#secondNumber {
+    box-shadow: inset 0 0 0px 3px;
+    color: black;
+    text-align: center;
+    font-family: "SC Pro Powerline";
+    font-weight: bolder;
+    border-radius: 20px;
+    border-color: transparent;
+    margin-left: 13rem;
+}
+
+#appendages{
+    color: rgb(255, 0, 162);
+    font-weight: bolder;
+    font-family: "SC Pro Powerline";
+    font-size: 24px;
+}
+
+.ai {
+    font-style: normal;
+    color: rgb(38, 160, 132);
+    font-weight: bold;
+    font-size: 24px;
+    line-height: 24px;
+}
+
+.ai.taurus,
+.ai.sun {
+    font-weight: normal;
+}
+
+
+.ai.taurus:before {
+    content: "\2649";
+
+}
+
+.ai.sun:before {
+    content: "\2609";
 }
